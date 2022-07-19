@@ -1,4 +1,6 @@
-# 01_Numpy
+# NumPy_Pandas_Matplotlib
+
+## 01_Numpy
 
 **numpy library에서 자주 사용되는 함수y**
 ```
@@ -32,7 +34,7 @@ np.mean - 평균
 ```
 <br>
 
-# 02_Pandas
+## 02_Pandas
 **pandas library에서 자주 사용되는 함수**
 ```
 pd.series - 시리즈 데이터 생성
@@ -65,7 +67,7 @@ df.sort_values() - 값으로 정렬하기
 
 <br>
 
-# 03_Pandas_advanced_stage
+## 03_Pandas_advanced_stage
 ```
 df.query - 조건으로 검색
 ```
@@ -127,7 +129,7 @@ ax.legend(loc= 위치 upper right / upper left / ~~~ / best
 ```
 <br>
 
-# 05_데이터 분석이란
+## 05_데이터 분석이란
 ```
 주제 선정 > 데이터 구조 파악 > 데이터 전처리 > 데이터 분석
 ```

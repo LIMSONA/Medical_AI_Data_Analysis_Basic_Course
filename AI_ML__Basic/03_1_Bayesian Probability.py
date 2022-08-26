@@ -1,3 +1,5 @@
+# 실습: Naive Bayes Classifier
+
 def main():
     sensitivity = float(input())
     prior_prob = float(input())

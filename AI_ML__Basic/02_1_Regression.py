@@ -1,4 +1,4 @@
-# 실습에 필요한 패키지입니다. 수정하지 마세요.
+
 import elice_utils
 import matplotlib as mpl
 mpl.use("Agg")

@@ -10,10 +10,12 @@
 
 ### 선형회귀분석
 ```
+데이터를 가장 잘 설명하는 선(함수)를 찾아 새로운 데이터가 어떤 결과값을 가질지 예측
 y= a*x + b
 ```
-
+![Loss Function](https://uiuidev.com/static/036fba17ca53cf66530612c426bd625a/c1b63/loss.png){: width="500"}
 ### 다중회귀분석
+![다중회귀분석](https://uiuidev.com/static/6f2534c3474fd2d4ef0192721c3287f9/c1b63/multi_loss.png){: width="500"}
 ```
 다중 회귀 분석(Multiple Linear Regression)은 데이터의 여러 변수(features) XXX를 이용해 결과 YYY를 예측하는 모델입니다
 ```
@@ -32,6 +34,7 @@ y= a*x + b
 ## Naive Bayes Classifier
 
 ### 베이즈법칙 
+![베이즈법칙](https://uiuidev.com/static/62c9252a353fc6000c812847cc37e80a/c1b63/base.png){: width="500"}
 
 ### 나이즈 베이즈 분류기
 ```
@@ -42,6 +45,7 @@ y= a*x + b
 
 * Classification: 주어진 데이터가 어떤 클래스에 속하는지 알아내는 방법을 자동으로 학습하는 알고리즘
 ```
+![나이즈베이즈분류기](https://uiuidev.com/static/20a928b8e6e86aaa5f60da8689cb3f31/3e096/naivebayes.png){: width="700"}
 ```
 * Likelihood: prior probability P(A)가 주어졌을 때, P(X|A)를 likelihood라 함
 테스트하고 싶은 모델이 데이터를 얼마나 잘 표현하는지 알 수 있음

@@ -1,94 +1,91 @@
-import numpy as np
+import tensorflow as tf
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 '''
-1. NAND_gate 함수를 완성하세요.
+1. 상수 텐서를 생성하는 constant_tensors 함수를 완성하세요.
 
-   Step01. 이전 실습을 참고하여 입력값 x1과 x2를
-           Numpy array 형식으로 정의한 후, x1과 x2에
-           각각 곱해줄 가중치도 Numpy array 형식으로 
-           적절히 설정해주세요.
-           
-   Step02. NAND_gate를 만족하는 Bias 값을
-           적절히 설정해주세요.
-           
-   Step03. 가중치, 입력값, Bias를 이용하여 
-           가중 신호의 총합을 구합니다.
-           
-   Step04. Step Function 함수를 호출하여 
-           NAND_gate의 출력값을 반환합니다.
+   Step01. 5의 값을 가지는 (1,1) shape의 8-bit integer 텐서를 만드세요.
+   
+   Step02. 모든 원소의 값이 0인 (3,5) shape의 16-bit integer 텐서를 만드세요.
+   
+   Step03. 모든 원소의 값이 1인 (4,3) shape의 8-bit integer 텐서를 만드세요.
 '''
 
-def NAND_gate(x1, x2):
+def constant_tensors():
     
-    x = np.array([x1,x2])
+    t1 = tf.constant(5, shape=(1,1), dtype=tf.int8 )
     
-    weight = np.array([-0.5, -0.5])
+    t2 = tf.zeros(shape=(3,5), dtype=tf.int16)
     
-    bias = 0.7
+    t3 = tf.ones(shape=(4,3), dtype=tf.int8)
     
-    y = np.matmul(x,weight) + bias
-    
-    return Step_Function(y)
+    return t1, t2, t3
 
 '''
-2. NOR_gate 함수를 완성하세요.
+2. 시퀀스 텐서를 생성하는 sequence_tensors 함수를 완성하세요. 
 
-   Step01. 마찬가지로 입력값 x1과 x2를 Numpy array 
-           형식으로 정의한 후, x1과 x2에 각각 곱해줄
-           가중치도 Numpy array 형식으로 적절히 설정해주세요.
-           
-   Step02. NOR_gate를 만족하는 Bias 값을
-           적절히 설정해주세요.
-           
-   Step03. 가중치, 입력값, Bias를 이용하여 
-           가중 신호의 총합을 구합니다.
-           
-   Step04. Step Function 함수를 호출하여 
-           NOR_gate의 출력값을 반환합니다.
+   Step01. 1.5에서 10.5까지 증가하는 3개의 텐서를 만드세요.
+   
+   Step02. 2.5에서 20.5까지 증가하는 5개의 텐서를 만드세요. 
 '''
 
-def NOR_gate(x1, x2):
+def sequence_tensors():
     
-    x = np.array([x1,x2])
+    seq_t1 = tf.range(1.5, 11, 4.5) #1.5에서 11미만 4.5간격
     
-    weight = np.array([-0.5,-0.5])
+    seq_t2 = tf.range(2.5, 21, 4.5)
     
-    bias = 0.3
-    
-    y = np.matmul(x,weight) + bias
-    
-    return Step_Function(y) 
+    return seq_t1, seq_t2
 
 '''
-3. 설명을 보고 Step Function을 완성합니다.
-   앞 실습에서 구현한 함수를 그대로 
-   사용할 수 있습니다.
+3. 변수를 생성하는 variable_tensor 함수를 완성하세요.
 
-   Step01. 0 미만의 값이 들어오면 0을,
-           0 이상의 값이 들어오면 1을
-           출력하는 함수를 구현하면 됩니다.
+   Step01. 값이 100인 변수 텐서를 만드세요.
+   
+   Step02. 모든 원소의 값이 1인 (2,2) shape의 변수 텐서를 만드세요.
+           이름도 'W'로 지정합니다.
+   
+   Step03. 모든 원소의 값이 0인 (2,) shape의 변수 텐서를 만드세요.
+           이름도 'b'로 지정합니다.
 '''
 
-def Step_Function(y):
+def variable_tensor():
     
-    return 1 if y>=0 else 0
+    var_tensor = tf.Variable(initial_value=100)
+    
+    W = tf.Variable(tf.ones(shape=(2,2)), name='W')
+    
+    b = tf.Variable(tf.zeros(shape=(2,)), name='b')
+    
+    return var_tensor, W, b
 
 def main():
     
-    # NAND와 NOR Gate에 넣어줄 Input
-    array = np.array([[0,0], [0,1], [1,0], [1,1]])
+    t1, t2, t3 = constant_tensors()
     
-    # NAND Gate를 만족하는지 출력하여 확인
-    print('NAND Gate 출력')
+    seq_t1,seq_t2 = sequence_tensors()
     
-    for x1, x2 in array:
-        print('Input: ',x1, x2, ' Output: ',NAND_gate(x1, x2))
+    var_tensor, W, b = variable_tensor()
     
-    # NOR Gate를 만족하는지 출력하여 확인
-    print('\nNOR Gate 출력')
+    constant_dict = {'t1':t1, 't2':t2, 't3':t3}
     
-    for x1, x2 in array:
-        print('Input: ',x1, x2, ' Output: ',NOR_gate(x1, x2))
+    sequence_dict = {'seq_t1':seq_t1, 'seq_t2':seq_t2}
+    
+    variable_dict = {'var_tensor':var_tensor, 'W':W, 'b':b}
+    
+    for key, value in constant_dict.items():
+        print(key, ' :', value.numpy())
+    
+    print()
+    
+    for key, value in sequence_dict.items():
+        print(key, ' :', value.numpy())
+        
+    print()
+    
+    for key, value in variable_dict.items():
+        print(key, ' :', value.numpy())
 
 if __name__ == "__main__":
     main()

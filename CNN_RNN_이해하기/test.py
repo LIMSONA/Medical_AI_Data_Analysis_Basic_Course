@@ -7,11 +7,6 @@
 # https://untitledtblog.tistory.com/150 참고
 
 # 3번 > RNN 설명
-# RNN은 이전의 hidden state를 반영하여 현재 데이터를 처리한다.
-# 같은 크기의 hidden state를 사용하는 경우라면 일반적으로 LSTM이 Vanilla RNN보다 연산 속도가 빠르다 (X) 느리다
-# RNN을 사용할 때 tanh 함수를 활성화 함수로 사용하는 것이 일반적이다.
-# RNN 내에서 실제 파라미터를 가지는 장치는 Fully-connected Layer이다.
-
 
 # 4번문제 > CNN 모델로 CIFAR-10 분류하기
 
